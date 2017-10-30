@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+         var student = function(name,mid,end) { 
+         this.name = name;
+         this.mid = mid;
+         this.end = end;
+         this.sum = mid+end;
+
+         this.starpick = function(checkValue){
+            var star="";
+            var underbar=0;
+            if(checkValue==1) {
+             underbar=10-mid;
+             for(i=0;i<mid;i++) star= star+'*';
+            }
+            else if(checkValue==2) {
+                underbar=10-end;
+                for(i=0;i<end;i++) star= star+'*';
+            }
+            else if(checkValue==3) {
+                underbar=20-this.sum;            
+                 for(i=0;i<this.sum;i++) star= star+'*';
+            }
+            else return "잘못된 값";
+            
+            for(i=0;i<underbar;i++) star= star+'_';
+            return star;
+         }
+         this.print = function(){
+            console.log(name +":"+this.starpick(1)+"+"+this.starpick(2)+"="+this.starpick(3));
+       }
+     
+       }
+
+       var stu1 = new student('A',10,8); 
+       var stu2 = new student('B',1,2);
+       var stu3 = new student('C',9,5);
+
+
+       stu1.print();
+       stu2.print();
+       stu3.print();
+       
+    </script>
+</head>
+<body>
+</body>
+</html>
