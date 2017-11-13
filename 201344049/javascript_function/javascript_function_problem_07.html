@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+
+
+      function height() {
+      	var print='';
+      	var cos=new Array();
+      	var row=new Array();
+      	var row_max=0;
+      	var cos_max=0;
+      	var val=new Array();
+		var array = new Array();
+ 		
+
+		//2차원배열 선언 및 자르기 
+		for(var i=0;i<arguments.length;i++) val[i]=arguments[i].split('\n');
+	   
+	    //자료처리 
+		for(var i=0;i<val.length;i++){				
+			for(var j=0;j<val[i].length;j++){
+				for(var k=0;k<val[i].length;k++);
+					row[i]=val[i].length;
+					cos[i]=val[i][j].length;
+			}
+		}	
+		//행 열 최대 길이 구히기 
+		row_max = Math.max.apply(null, row);
+		cos_max = Math.max.apply(null, cos);
+
+		//다차원배열 선언
+		for(var i=0;i<row_max;i++) array[i]= new Array();
+		//다차원배열 초기화
+		for(var i=0;i<row_max;i++){
+			for(var j=0;j<cos_max;j++){
+				array[i][j]=0;
+			}
+		}
+		//값추가
+		for(var i=0;i<cos.length;i++){
+			for(var j=0;j<row[i];j++){
+				for(var k=0;k<cos[i];k++){
+					array[j][k]++;
+				}
+			}
+		}
+		//결과만들기
+		for(var i=0;i<array.length;i++){
+			for(var j=0;j<array[i].length;j++){
+				if(j<array[i].length-1)print+=array[i][j]+' ';
+				else print+=array[i][j];
+			}
+			if(i<array.length-1) print+='\n';
+		}
+		
+		//출력
+		return print;
+		
+		
+      	//행 구하기 
+	   }
+      exepect(height('O', 'OOOO\nOOOO'), '2 1 1 1\n1 1 1 1');
+      exepect(height('OOOO', 'OOOO\nOOOO'), '2 2 2 2\n1 1 1 1');
+      exepect(height('OO\nOO', 'OOOO\nOOOO'), '2 2 1 1\n2 2 1 1');
+      exepect(height('OO\nOO\nOO', 'OOOO\nOOOO'), '2 2 1 1\n2 2 1 1\n1 1 0 0');
+      exepect(height('O', 'OOOO\nOOOO', 'OOOO'), '3 2 2 2\n1 1 1 1');
+      exepect(height('OOOO', 'OOOO\nOOOO', 'OOOO'), '3 3 3 3\n1 1 1 1');
+      exepect(height('OO\nOO', 'OOOO\nOOOO', 'OOOO'), '3 3 2 2\n2 2 1 1');
+      exepect(height('OO\nOO\nOO', 'OOOO\nOOOO', 'O\nO\nO\nO'), '3 2 1 1\n3 2 1 1\n2 1 0 0\n1 0 0 0');
+      exepect(height('O', 'O', 'O'), '3');
+
+      function exepect(l, r) {
+        if (l === r)
+         console.log('pass');
+        else
+         console.log('fail');
+      }
+      
+    </script>
+</head>
+<body>
+</body>
+</html>
+	        	

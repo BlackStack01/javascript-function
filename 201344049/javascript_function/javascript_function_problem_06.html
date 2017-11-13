@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+
+      function min(array){
+      	 array.sort((a, b) => a - b);
+
+		return array[0];
+      }
+
+
+      function max(array){
+      	 array.sort((a, b) => a - b);
+		return array[array.length-1];
+      }
+
+      function errorCheck(array){
+
+		for(var i=0;i<array.length;i++){
+			if(array[i]<=0) alert((i+1)+"번째 값["+array[i]+"]의 값은 잘못 된 입력");
+			else if(isNaN(array[i]) == true) alert((i+1)+"번째 값["+array[i]+"]의 값은 잘못 된 입력");  //방법1. isNaN 이용 문자채크
+		}
+		
+      }
+      
+
+      function print_scores_chart() {
+      	var print="────────────────────────\n";
+      	var array = new Array;
+      	var arrayTemp = new Array;
+      		
+      	//call by ref 방식을 사용 sort 를 이용하여 2개 생성 
+      	for(var i=0;i<arguments.length;i++) {
+      		array[i]=arguments[i];
+      		arrayTemp[i]=arguments[i];
+      	}
+      	errorCheck(arrayTemp); //에러 채크 모음 함수 
+
+      	for(var i=max(arrayTemp);i>=1;i--){
+      		for(var j=0;j<array.length;j++){
+	      	  if(i<=array[j]) print+="* ";
+	      	 	else print+="  ";
+	      	}
+
+	      if(i==max(arrayTemp)) print+="←		MAX ["+i+"]\n";
+	       else if(i==1) print+="←		MIN ["+i+"]\n";
+	        else print+="			["+i+"]\n";
+      	}
+		
+		print+="────────────────────────\n";
+		for(var i=0;i<array.length;i++) print+=(i+1)+" ";
+		
+
+       console.log(print);
+      }
+      	
+    	print_scores_chart(1,1,1,1,1,1,1,1,1,1,1,1,1);
+      print_scores_chart(1,2,3,4,5);
+      print_scores_chart(10,1,10,1,5,5);
+      print_scores_chart(5, 2, 2, 9, 3, 5, 9);
+    </script>
+</head>
+<body>
+</body>
+</html>
